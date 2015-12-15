@@ -17,7 +17,11 @@ public class RowColumn {
     }
     
     public Cell getValue(int index) {
-        return data[index];
+        return this.data[index];
+    }
+    
+    public int getLength() {
+    	return this.data.length;
     }
     
     public RowColumn applyValue(int index, Cell value) {

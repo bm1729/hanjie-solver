@@ -6,6 +6,10 @@ public class Grid {
     private RowColumn[] columns;
     
     public Grid(int numberOfRows, int numberOfColumns) {
+        if (numberOfColumns <= 0 || numberOfRows <= 0) {
+            throw new IllegalArgumentException("Must have positive number of rows and columns");
+        }
+        
         this.rows = new RowColumn[numberOfRows];
         for (int row = 0; row < numberOfRows; ++row) {
             this.rows[row] = new RowColumn(numberOfColumns);
@@ -19,6 +23,14 @@ public class Grid {
     
     private Grid() {}
     
+    public RowColumn getRow(int index) {
+        return this.rows[index];
+    }
+    
+    public RowColumn getColumn(int index) {
+        return this.columns[index];
+    }
+    
     public int getNumberOfRows() {
         return this.rows.length;
     }
@@ -28,6 +40,11 @@ public class Grid {
     }
     
     public Grid applyRow(int index, RowColumn row) {
+        
+        if (row.getLength() != this.rows[0].getLength()) {
+            throw new IllegalArgumentException("All rows must be the same length");
+        }
+        
         Grid toReturn = new Grid();
         toReturn.rows = new RowColumn[getNumberOfRows()];
         toReturn.columns = new RowColumn[getNumberOfColumns()];
@@ -48,6 +65,11 @@ public class Grid {
     }
     
     public Grid applyColumn(int index, RowColumn column) {
+        
+        if (column.getLength() != this.columns[0].getLength()) {
+            throw new IllegalArgumentException("All columns must be the same length");
+        }
+        
         Grid toReturn = new Grid();
         toReturn.rows = new RowColumn[getNumberOfRows()];
         toReturn.columns = new RowColumn[getNumberOfColumns()];
