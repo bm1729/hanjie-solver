@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import com.benmumford.TestUtils;
+
 import com.benmumford.data.Cell;
 import com.benmumford.data.RowColumn;
 
@@ -30,8 +32,8 @@ public class CommonRowColumnFinderTests {
     @Test
     public void findCommonRowColumn() {
         ArrayList<RowColumn> candidates = new ArrayList<>();
-        candidates.add(createRowColumn(Cell.FULL, Cell.EMPTY, Cell.FULL));
-        candidates.add(createRowColumn(Cell.FULL, Cell.EMPTY, Cell.EMPTY));
+        candidates.add(TestUtils.createRowColumn(Cell.FULL, Cell.EMPTY, Cell.FULL));
+        candidates.add(TestUtils.createRowColumn(Cell.FULL, Cell.EMPTY, Cell.EMPTY));
         
         RowColumn result = target.findCommonRowColumn(candidates);
         
